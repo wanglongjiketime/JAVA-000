@@ -1,0 +1,6 @@
+1、Java8 默认使用并行GC，即ParallelGC
+2、G1 GC日志中做了KB到MB的转换，不知道其他GC是否也能转换
+3、Win上模拟：使用ParallelGC时产生的对象最多，使用G1GC时产生对象较少，感觉这条不具备参考性
+4、随着堆内存的增大，FullGC的次数会逐渐减少，YoungGC次数也会减少
+5、如果堆内存小到一定程度如256MB，可能出现OOM也可能出现一直在做FullGC的情况，对象产生4000左右
+6、256MB时ParallelGC基本上会每次运行都是OOM；SerialGC基本不会OOM（偶尔1次），但会一直FullGC;G1GC也基本每次都OOM；CMSGC；CMS不会OOM，但会一直FullGC，对象4200左右
